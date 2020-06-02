@@ -1,0 +1,138 @@
+spring:
+  # ============ mysql ===========
+  datasource:
+    #    p6sy sql打印：
+    #    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    #    url: jdbc:p6sy:mysql://127.0.0.1:3306/my_test?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/my_test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: wo4caoxiang2
+    devtools:
+      restart:
+        enabled: true     #这里是为了热部署的，与mybatis是无关的
+
+# ============ mybatis-plus ===========
+mybatis-plus:
+  #mybatis
+  #Mapper路径
+  # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
+  # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  #实体,枚举类扫描，多个package用逗号或者分号分隔
+  type-aliases-package: com.*.entity
+  #  type-enums-package: com.zj.springboot.demomybatisplus.entity.enums
+  global-config:
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      #      AUTO, NONE, INPUT, ID_WORKER, UUID, ID_WORKER_STR;
+      id-type: AUTO
+      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #逻辑删除配置
+      logic-delete-field: delFlag  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+      #数据库类型。支持主流的数据库
+      db-type: mysql
+
+  #    刷新mapper 调试神器
+  #    refresh: true
+  #      sql-injector: com.baomidou.mybatisplus.extension.injector.LogicSqlInjector
+  configuration:
+    #数据库字段与数据对象字段的映射策略
+    #使用驼峰法映射属性,配置这个resultType可以映射
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    #配置slq打印日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#spring:
+#  #mysql
+#  datasource:
+#    #    driver-class-name: org.h2.Driver
+#    #    schema: classpath:db/schema-h2.sql
+#    #    data: classpath:db/data-h2.sql
+#    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+##    url: jdbc:p6sy:mysql://127.0.0.1:3306/my_test?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+#    url: jdbc:p6spy:mysql://127.0.0.1:3306/my_test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#    username: root
+#    password: wo4caoxiang2
+#  #  devtools:
+#  #      restart:
+#  #        enabled: true     #这里是为了热部署的，与mybatis是无关的
+#
+#mybatis-plus:
+#  #mybatis
+#  #Mapper路径
+#  # 如果是放在src/main/java目录下 classpath:/com/yourpackage/*/mapper/*Mapper.xml
+#  # 如果是放在resource目录 classpath:/mapper/*Mapper.xml
+#  mapper-locations: classpath:/mapper/*Mapper.xml
+#  #实体,枚举类扫描，多个package用逗号或者分号分隔
+#  type-aliases-package: com.*.entity
+#  #  type-enums-package: com.zj.springboot.demomybatisplus.entity.enums
+#  global-config:
+#    db-config:
+#      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+#      #      AUTO, NONE, INPUT, ID_WORKER, UUID, ID_WORKER_STR;
+#      id-type: AUTO
+#      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+#      field-strategy: not_empty
+#      #驼峰下划线转换
+#      column-underline: true
+#      #数据库大写下划线转换
+#      #capital-mode: true
+#      #逻辑删除配置
+#      logic-delete-field: delFlag  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+#      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+#      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+#      #      logic-delete-value: Y
+#      #      logic-not-delete-value: N
+#      #数据库类型。支持主流的数据库
+#      db-type: mysql
+#
+#    #刷新mapper 调试神器
+##      refresh: true
+#      #    sql-injector: com.baomidou.mybatisplus.extension.injector.LogicSqlInjector
+#    #自定义填充策略接口实现
+#    #meta-object-handler: com.baomidou.springboot.xxx
+#    #自定义SQL注入器
+#    #sql-injector: com.baomidou.springboot.xxx
+#  configuration:
+#    #数据库字段与数据对象字段的映射策略
+#    #使用驼峰法映射属性,配置这个resultType可以映射
+#    map-underscore-to-camel-case: true
+#    cache-enabled: false
+#    #配置slq打印日志
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#
+##logging:
+##  level:
+##    # 日志级别，显示操作sql
+##    com.luwei.demo.mybatisplusdemo.mapper: debug
