@@ -37,7 +37,7 @@ public class UserController {
 //        Object userList = JSON.toJSONString(list);
 //        log.info(">>>>>>>>>>>> userList:" + userList);
 
-        List<User> users = userService.MySelectAll();
+        List<User> users = userService.mySelectAll();
         Object userList = JSON.toJSONString(users);
         log.info(">>>>>>>>>>>> userList:" + userList);
         return userList;
@@ -52,7 +52,7 @@ public class UserController {
 //        log.info(">>>>>>>>>>>> userList:" + userList);
         log.info(">>>>>>>>>> Page ,: " + JSON.toJSONString(page));
 
-        IPage<User> users = userService.MySelectAllByPage(page);
+        IPage<User> users = userService.mySelectAllByPage(page);
         Object userList = JSON.toJSONString(users);
         log.info(">>>>>>>>>>>> userList:" + userList);
         return userList;

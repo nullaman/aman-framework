@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.ypypay.payment.mapper")
+@MapperScan("com.aman.*.mapper")
 public class MybatisPlusConfig {
     /**
      * 乐观锁 version

@@ -1,9 +1,9 @@
 server:
-  port: 56010 #启动端口 命令行注入
+  port: 52300
 
 spring:
   application:
-    name: yplx-gateway-demo
+    name: aman-gateway
   main:
     allow‐bean‐definition‐overriding: true # Spring Boot 2.1 需要设定
   cloud:
@@ -15,7 +15,7 @@ spring:
       config:
         server‐addr: ${spring.cloud.nacos.discovery.server-addr} # 配置中心地址
         namespace: 4757afd1-9d80-419c-a135-f3b00d77eb8f # 开发环境
-        group: NACOS_YPLX_GROUP # xx业务组
+        group: NACOS_AMAN_GROUP # xx业务组
         prefix: ${spring.application.name}
         file‐extension: yaml
       #        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
@@ -26,9 +26,9 @@ spring:
 
 zuul:
   routes:
-    payment-biz:
-      ##stripPrefix: false
-      path: /payment/**
+    user-biz:
+#      stripPrefix: true
+      path: /user/**
     feign-biz:
       ##stripPrefix: false
       path: /test/**

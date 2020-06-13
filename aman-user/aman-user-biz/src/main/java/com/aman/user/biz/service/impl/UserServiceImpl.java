@@ -20,12 +20,12 @@ import java.util.List;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Override
-    public List<User> MySelectAll() {
-        return baseMapper.MySelectAll();
+    public List<User> mySelectAll() {
+        return baseMapper.mySelectAll();
     }
 
     @Override
-    public IPage<User> MySelectAllByPage(Page page) {
-        return baseMapper.MySelectAllByPage(page);
+    public IPage<User> mySelectAllByPage(Page page) {
+        return baseMapper.mySelectAllByPage(page);
     }
 }
