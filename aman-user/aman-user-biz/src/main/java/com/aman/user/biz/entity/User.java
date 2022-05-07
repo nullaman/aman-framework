@@ -1,5 +1,6 @@
 package com.aman.user.biz.entity;
 
+import com.aman.common.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

@@ -1,4 +1,4 @@
-package com.aman.user.biz.entity;
+package com.aman.common.entity;
 
 import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.annotation.*;

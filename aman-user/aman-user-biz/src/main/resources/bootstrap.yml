@@ -1,27 +1,29 @@
 server:
   port: 52301
-  servlet:
-    context‐path: /gatewayuser
+#  servlet:
+#    context‐path: /gatewayuser
 
 spring:
+  profiles:
+    active: dev
   application:
     name: user-biz
   main:
-    allow‐bean‐definition‐overriding: true # Spring Boot 2.1 需要设定
+    allow‐bean‐definition‐overriding: true
   cloud:
     nacos:
       discovery:
-        server‐addr: ${NACOS-HOST:192.168.52.1}:${NACOS-PORT:8848}
-        namespace: 4757afd1-9d80-419c-a135-f3b00d77eb8f
+        server‐addr: ${NACOS-HOST:114.132.234.85}:${NACOS-PORT:8848}
+        namespace: 1c93548b-65b1-44d3-bd19-5499834a6ee4
         cluster‐name: dev
       config:
-        server‐addr: ${spring.cloud.nacos.discovery.server-addr} # 配置中心地址
-        namespace: 4757afd1-9d80-419c-a135-f3b00d77eb8f # 开发环境
-        group: NACOS_AMAN_GROUP # xx业务组
+        server‐addr: ${spring.cloud.nacos.discovery.server-addr}
+        namespace: 1c93548b-65b1-44d3-bd19-5499834a6ee4
+        group: NACOS_AMAN_GROUP
         prefix: ${spring.application.name}
         file‐extension: yaml
-#        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-      #  autoconfigure:
-      #    exclude: org.springframework.cloud.gateway.config.GatewayAutoConfiguration,org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration
+#        shared-dataids: ${spring.cloud.nacos.config.prefix}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#        autoconfigure:
+#          exclude: org.springframework.cloud.gateway.config.GatewayAutoConfiguration,org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration
 #  profiles:
 #    active: dev

@@ -2,6 +2,8 @@ server:
   port: 52300
 
 spring:
+  profiles:
+    active: dev
   application:
     name: aman-gateway
   main:
@@ -9,26 +11,41 @@ spring:
   cloud:
     nacos:
       discovery:
-        server‐addr: ${NACOS-HOST:192.168.52.1}:${NACOS-PORT:8848}
-        namespace: 4757afd1-9d80-419c-a135-f3b00d77eb8f
+        # 配置中心地址
+        server‐addr: ${NACOS-HOST:114.132.234.85}:${NACOS-PORT:8848}
+        # 开发环境
         cluster‐name: dev
+        namespace: 1c93548b-65b1-44d3-bd19-5499834a6ee4
       config:
-        server‐addr: ${spring.cloud.nacos.discovery.server-addr} # 配置中心地址
-        namespace: 4757afd1-9d80-419c-a135-f3b00d77eb8f # 开发环境
-        group: NACOS_AMAN_GROUP # xx业务组
+        server‐addr: ${NACOS-HOST:114.132.234.85}:${NACOS-PORT:8848}
+        namespace: 1c93548b-65b1-44d3-bd19-5499834a6ee4
+        # xx业务组
+        group: DEV_GATEWAY_GROUP
+        #指定前缀
         prefix: ${spring.application.name}
+        #指定后缀名称
         file‐extension: yaml
-      #        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
-      #  autoconfigure:
-      #    exclude: org.springframework.cloud.gateway.config.GatewayAutoConfiguration,org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration
-#  profiles:
-#    active: dev
+        #指定共享配置文件
+        shared-dataids: ${spring.cloud.nacos.config.prefix}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#        # 自动刷新的
+#        refreshable-dataids: ${spring.cloud.nacos.config.shared-dataids}
+#        autoconfigure:
+#          exclude: org.springframework.cloud.gateway.config.GatewayAutoConfiguration,org.springframework.cloud.gateway.config.GatewayClassPathWarningAutoConfiguration
 
+
+## 拦截url为 【ip:端口】/api/user-biz/【url】 到user服务  /user-biz/【url】
 zuul:
+  prefix: /api
+  strip-prefix: true
   routes:
     user-biz:
-#      stripPrefix: true
       path: /user/**
-    feign-biz:
-      ##stripPrefix: false
-      path: /test/**
+
+data-filter:
+  #需要验证token的请求地址,可设置多个,会触发JwtAuthPreFilter
+  auth-path:
+    - /api/user-biz/user/**
+  #登录请求地址,可设置多个,会触发LoginAddJwtPostFilter
+  user-login-path:
+    - /api/user-biz/login/**
+

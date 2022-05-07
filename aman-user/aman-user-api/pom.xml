@@ -12,4 +12,12 @@
     <artifactId>aman-user-api</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.aman</groupId>
+            <artifactId>aman-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
 </project>

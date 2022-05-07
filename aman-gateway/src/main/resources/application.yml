@@ -4,7 +4,7 @@ spring:
     #    p6sy sql打印：
     #    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     #    url: jdbc:p6sy:mysql://127.0.0.1:3306/my_test?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
-    url: jdbc:mysql://localhost:3306/my_test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://114.132.234.85:3306/my_test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: wo4caoxiang2
     devtools:
